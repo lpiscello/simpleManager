@@ -5,7 +5,7 @@
 
     'use strict';
 
-    module.exports = function(churchReposiroty) {
+    module.exports = function(churchRepository) {
 
         function errorThrown(res) {
 
@@ -16,7 +16,7 @@
         return {
             getAll: function(req, res) {
 
-                churchReposiroty.getAll().then(function(results) {
+                churchRepository.getAll().then(function(results) {
 
                     res.send(results);
                 }, function() {
@@ -26,7 +26,7 @@
             },
             addNew: function(req, res) {
 
-                churchReposiroty.add(req.body).then(function(createdChurchId) {
+                churchRepository.add(req.body).then(function(createdChurchId) {
 
                     res.send('Church created with Id: ' + createdChurchId);
                 }, function() {
@@ -36,7 +36,7 @@
             },
             getById: function(req, res) {
 
-                churchReposiroty.getById(req.params.id).then(function(result) {
+                churchRepository.getById(req.params.id).then(function(result) {
 
                     if(!result || !result[0] || result.length < 1)
                         res.status(404).send('Church not found :(');
@@ -49,14 +49,14 @@
             },
             update: function(req, res) {
 
-                churchReposiroty.getById(req.params.id).then(function(result) {
+                churchRepository.getById(req.params.id).then(function(result) {
 
                     if(!result || !result[0] || result.length < 1) {
 
                         res.status(404).send('Church not found :(');
                     } else {
 
-                        churchReposiroty.update(req.params.id, req.body).then(function () {
+                        churchRepository.update(req.params.id, req.body).then(function () {
 
                             res.send('Church updated!');
                         }, function () {
@@ -71,14 +71,14 @@
             },
             remove: function(req, res) {
 
-                churchReposiroty.getById(req.params.id).then(function(result) {
+                churchRepository.getById(req.params.id).then(function(result) {
 
                     if(!result || !result[0] || result.length < 1) {
 
                         res.status(404).send('Church not found :(');
                     } else {
 
-                        churchReposiroty.removeById(req.params.id).then(function() {
+                        churchRepository.removeById(req.params.id).then(function() {
 
                             res.send('Church removed!');
                         }, function() {

@@ -16,7 +16,7 @@
         return {
             getAll: function(req, res) {
 
-                userReposiroty.getAll().then(function(results) {
+                userRepository.getAll().then(function(results) {
 
                     res.send(results);
                 }, function() {
@@ -26,7 +26,7 @@
             },
             addNew: function(req, res) {
 
-                userReposiroty.add(req.body).then(function(createdUserId) {
+                userRepository.add(req.body).then(function(createdUserId) {
 
                     res.send('User created with Id: ' + createdUserId);
                 }, function() {

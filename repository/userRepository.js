@@ -45,7 +45,7 @@
                 return queryFromPool(function(deferred, connection) {
 //falta colocar o 'last_login'
                     connection.query('INSERT INTO users (name, login, password, email) VALUES (?, ?, ?, ?)',
-                        [newUser.name, newUser.login || null, newProduct.password, newUser.email], function(queryError, resultInfo) {
+                        [newUser.name, newUser.login || null, newUser.password || null, newUser.email || null], function(queryError, resultInfo) {
 
                             if(queryError)
                                 deferred.reject();
@@ -72,7 +72,7 @@
                 return queryFromPool(function(deferred, connection) {
 
                     connection.query('UPDATE users SET name = ?, login = ?, password = ?, email = ? WHERE id = ?',
-                        [updatedUser.name, updatedUser.login|| null, updatedUser.password, updatedUser.email, userId], function(queryError) {
+                        [updatedUser.name, updatedUser.login|| null, updatedUser.password || null, updatedUser.email || null, userId], function(queryError) {
 
                             if(queryError)
                                 deferred.reject();

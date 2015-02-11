@@ -8,7 +8,7 @@
         var ProductController = require('./controller/productController')(ProductRepository);
 
 //<<<<<<< HEAD
-        var UserRepository = require('./repository/userRepository')(pool);
+        var userRepository = require('./repository/userRepository')(pool);
         var UserController = require('./controller/userController')(UserController);
 
 //=======
@@ -16,7 +16,7 @@
         var OrderController = require('./controller/orderController')(OrderRepository);
 //>>>>>>> origin/master
 
-        var ChurchRepository = require('./repository/churchRepository')(pool);
+        var churchRepository = require('./repository/churchRepository')(pool);
         var ChurchController = require('./repository/churchController')(churchRepository);
 
         app.get('/product', ProductController.getAll);
